@@ -51,9 +51,6 @@ int main(int argc, const char * argv[]) {
         }
     }
     
-//    for (int counter = 0; counter < startNumbers.size(); counter++) {
-//        cout << startNumbers[counter];
-//    }
 //    printNumbers(startNumbers);
 //    addNumbers(startNumbers);
 //    long fib = startNumbers[0];
@@ -93,14 +90,24 @@ void fibonacci(long fib) {
 
 void bigNumber(string str1, string str2) {
     string total = "0";
-    int totalFirst = 0;
-    while (str1.size() > 0 && str2.size() > 0) {
+    while (str1.size() > 0 || str2.size() > 0) {
         string currTotal = "0";
-        int num1 = stoi(str1.substr(str1.size() - 1));
-        str1.pop_back();
-        int num2 = stoi(str2.substr(str2.size() - 1));
-        str2.pop_back();
-        totalFirst = stoi(total.substr(0,1));
+        int num1 = 0;
+        int num2 = 0;
+        if (str1.size() > 0) {
+            num1 = stoi(str1.substr(str1.size() - 1));
+            str1.pop_back();
+        }
+        else if (str1.size() == 0) {
+            num1 = 0;
+        }
+        if (str2.size() > 0) {
+            num2 = stoi(str2.substr(str2.size() - 1));
+            str2.pop_back();
+        }
+        else if (str2.size() == 0) {
+            num2 = 0;
+        }
         stringstream curr1;
         curr1 << num1 + num2;
         curr1 >> currTotal;
